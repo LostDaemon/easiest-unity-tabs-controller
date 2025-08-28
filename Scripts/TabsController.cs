@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LostDaemon.TabsControllerPackage
-{
+namespace LostDaemon.TabsController
+{ 
     /// <summary>
     /// Controller for managing tabs with button controls and corresponding game objects
     /// </summary>
@@ -16,11 +16,12 @@ namespace LostDaemon.TabsControllerPackage
             public GameObject tabContent;
         }
 
-        [Header("Tab Configuration")]
+        [Header("Tabs Configuration")]
         [SerializeField] private List<TabData> tabs = new List<TabData>();
-
+        
         private void Start()
         {
+            Debug.LogWarning("Start!");
             InitializeTabs();
         }
 
@@ -29,6 +30,7 @@ namespace LostDaemon.TabsControllerPackage
         /// </summary>
         private void InitializeTabs()
         {
+            Debug.Log("InitializeTabs");
             if (tabs == null || tabs.Count == 0)
             {
                 Debug.LogWarning("TabsController: No tabs configured!");
@@ -77,6 +79,32 @@ namespace LostDaemon.TabsControllerPackage
             if (tabIndex >= 0 && tabIndex < tabs.Count && tabs[tabIndex].tabContent != null)
             {
                 tabs[tabIndex].tabContent.SetActive(true);
+            }
+
+            UpdateButtonColors(tabIndex);
+        }
+
+        /// <summary>
+        /// Update button colors to highlight the active tab button
+        /// </summary>
+        /// <param name="activeTabIndex">Index of the active tab</param>
+        private void UpdateButtonColors(int activeTabIndex)
+        {
+            for (int i = 0; i < tabs.Count; i++)
+            {
+                if (tabs[i].button != null)
+                {
+                    var colors = tabs[i].button.colors;
+                    if (i == activeTabIndex)
+                    {
+                        colors.normalColor = colors.selectedColor;
+                    }
+                    else
+                    {
+                        colors.normalColor = Color.white;
+                    }
+                    tabs[i].button.colors = colors;
+                }
             }
         }
 
