@@ -18,10 +18,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Usage examples
 - Complete documentation
 
+## [1.0.1] - 2025-08-30
+
+### Changed
+
+- Tab buttons can be colored
+- Tab button texts color depend on button color
+
 ### Package Structure
 
 - `TabsController.cs` - main component
 - `README.md` - detailed documentation
 - `package.json` - Unity Package Manager metadata
-- `Samples~/BasicExample/` - usage examples
+- `DemoScene\DemoScene.unity` - Demo scene
 - `CHANGELOG.md` - version history
