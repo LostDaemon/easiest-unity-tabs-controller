@@ -1,5 +1,7 @@
 # TabsController for Unity
 
+**Unity Asset Store:** Awaiting review...
+
 Simple and efficient tabs controller for Unity UI with button-based navigation.
 
 ## Description
